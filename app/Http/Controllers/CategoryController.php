@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryStoreRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return view('lottery.category');
+        $categories = Category::all();
+        return view('lottery.category',compact('categories'));
     }
 
     public function store(CategoryStoreRequest $request)
     {
-        dd($request->all());
+         Category::create([
+           'title' => $request->title
+        ]);
+        return redirect()->back()->with('success','Successfully Create Title!');
     }
 }
