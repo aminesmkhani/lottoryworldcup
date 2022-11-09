@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\RaceController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +19,6 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/dashboard', function () {return view('lottory.main');})->name('dashboard');
-    Route::get('/add',[RaceController::class,'index']);
+    Route::get('/dashboard', function () {return view('lottery.main');})->name('dashboard');
+    Route::get('/category',[CategoryController::class,'index']);
 });

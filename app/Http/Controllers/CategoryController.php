@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RaceController extends Controller
+class CategoryController extends Controller
 {
     public function index()
     {
-        return view('lottery.addRace');
+        return view('lottery.category');
     }
 }

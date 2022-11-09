@@ -1,4 +1,4 @@
-@extends('lottory.panel')
+@extends('lottery.panel')
 @section('title')
 Categories 🔠
 @endsection
