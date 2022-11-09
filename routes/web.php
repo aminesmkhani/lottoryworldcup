@@ -22,4 +22,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/dashboard', function () {return view('lottery.main');})->name('dashboard');
     Route::get('/category',[CategoryController::class,'index']);
     Route::post('/category',[CategoryController::class,'store'])->name('storeCategory');
+    Route::get('/category/delete/{id}',[CategoryController::class,'destroy'])->name('deleteCategory');
 });

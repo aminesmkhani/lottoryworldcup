@@ -94,7 +94,7 @@ Categories 🔠
                             <tr>
                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$category->title}}</td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$category->created_at}}</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> <a href="" class="text-red-600 hover:text-red-900">Remove</a></td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> <a href="{{route('deleteCategory',$category->id)}}" class="text-red-600 hover:text-red-900">Remove</a></td>
                             </tr>
                             @endforeach
                             </tbody>

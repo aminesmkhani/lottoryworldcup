@@ -16,9 +16,15 @@ class CategoryController extends Controller
 
     public function store(CategoryStoreRequest $request)
     {
-         Category::create([
-           'title' => $request->title
-        ]);
+         Category::create(['title' => $request->title]);
         return redirect()->back()->with('success','Successfully Create Title!');
+    }
+
+    public function destroy($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->back()->with('success','Category Successfully Delete!');
+
     }
 }
