@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('participants', function (Blueprint $table) {
             $table->id();
-            $table->string('title',170)->unique();
+            $table->integer('game_id');
+            $table->string('tel',12);
+            $table->tinyInteger('team1_goal');
+            $table->tinyInteger('team2_goal');
+            $table->enum('win',['yes','no']);
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('participants');
     }
 };
