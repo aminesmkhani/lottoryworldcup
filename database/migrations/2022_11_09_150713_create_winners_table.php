@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('winners', function (Blueprint $table) {
             $table->id();
+            $table->string('tel',12);
+            $table->integer('category_id');
+            $table->integer('game_id');
             $table->timestamps();
         });
     }
