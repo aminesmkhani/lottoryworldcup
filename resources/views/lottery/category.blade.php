@@ -3,7 +3,8 @@
 Categories 🔠
 @endsection
 @section('content')
-    <form class="mt-6 space-y-8 divide-y divide-gray-200">
+    <form class="mt-6 space-y-8 divide-y divide-gray-200" method="post" action="{{route('storeCategory')}}" >
+        @csrf
         <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div class="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
                 <div>
@@ -11,9 +12,24 @@ Categories 🔠
                 </div>
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="category-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Category Name</label>
+                        <label for="title" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Category Name</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <input type="text" name="category-name" id="category-name" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm">
+                            <input type="text" name="title" id="title" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm" required>
+                            @if($errors->any())
+                                <div class="rounded-md bg-red-50 p-4">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <!-- Heroicon name: mini/x-circle -->
+                                            <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h3 class="text-sm font-medium text-red-800"> {{ implode('', $errors->all(':message')) }}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -22,7 +38,6 @@ Categories 🔠
 
         <div class="pt-5">
             <div class="flex justify-end">
-                <button type="button" class="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Cancel</button>
                 <button type="submit" class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
             </div>
         </div>
