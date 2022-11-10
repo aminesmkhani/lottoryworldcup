@@ -8,6 +8,6 @@ class RaceController extends Controller
 {
     public function index()
     {
-        return view('lottory.addRace');
+        return view('lottery.addRace');
     }
 }
