@@ -26,4 +26,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/category/delete/{id}',[CategoryController::class,'destroy'])->name('deleteCategory');
 
     Route::get('/games',[GamesController::class,'index']);
+    Route::post('/games',[GamesController::class,'store'])->name('storeGame');
+    Route::get('/game/delete/{id}',[GamesController::class,'destroy'])->name('destroyGame');
 });

@@ -3,16 +3,16 @@
 Games 🏆
 @endsection
 @section('content')
-    <form class="mt-6 space-y-8 divide-y divide-gray-200" method="post" action="{{route('storeCategory')}}" >
+    <form class="mt-6 space-y-8 divide-y divide-gray-200" method="post" action="{{route('storeGame')}}" >
         @csrf
         <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div class="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
                 <div>
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Definition of Category</h3>
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Definition of Games</h3>
                 </div>
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="title" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Category Name</label>
+                        <label for="team1" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Team1 Name</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             @if(Session::has('success'))
                                 <div class="rounded-md bg-green-50 p-4">
@@ -41,7 +41,15 @@ Games 🏆
                                 </div>
 
                             @endif
-                            <input type="text" name="title" id="title" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm" required>
+                            <input type="text" name="team1" id="team1" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6 sm:space-y-5">
+                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="team2" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Team2 Name</label>
+                        <div class="mt-1 sm:col-span-2 sm:mt-0">
+                            <input type="text" name="team2" id="team2" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm" required>
                             @if($errors->any())
                                 <div class="rounded-md bg-red-50 p-4">
                                     <div class="flex">
@@ -73,8 +81,8 @@ Games 🏆
     <div class="mt-12 px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
-                <h1 class="text-xl font-semibold text-gray-900">List Of Category</h1>
-                <p class="mt-2 text-sm text-gray-700">A list of all in lottery </p>
+                <h1 class="text-xl font-semibold text-gray-900">List Of Games</h1>
+                <p class="mt-2 text-sm text-gray-700">A list of all in games </p>
             </div>
         </div>
         <div class="mt-8 flex flex-col">
@@ -84,17 +92,19 @@ Games 🏆
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Category Title</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created At</th>
+                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Game Title</th>
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Game Result</th>
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Actions</th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                             @foreach($games as $game)
                             <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$category->title}}</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$category->created_at}}</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> <a href="{{route('deleteCategory',$category->id)}}" class="text-red-600 hover:text-red-900">Remove</a></td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$game->title}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$game->created_at}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$game->created_at}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> <a href="{{route('deleteGame',$game->id)}}" class="text-red-600 hover:text-red-900">Remove</a></td>
                             </tr>
                             @endforeach
                             </tbody>
