@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GamesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/category',[CategoryController::class,'index']);
     Route::post('/category',[CategoryController::class,'store'])->name('storeCategory');
     Route::get('/category/delete/{id}',[CategoryController::class,'destroy'])->name('deleteCategory');
+
+    Route::get('/games',[GamesController::class,'index']);
+    Route::post('/games',[GamesController::class,'store'])->name('storeGame');
+    Route::get('/game/delete/{id}',[GamesController::class,'destroy'])->name('deleteGame');
+    Route::get('/game/active/{id}',[GamesController::class,'active'])->name('activeGame');
 });
