@@ -101,10 +101,29 @@ Games 🏆
                             <tbody class="divide-y divide-gray-200 bg-white">
                             @foreach($games as $game)
                             <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$game->title}}</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$game->created_at}}</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$game->created_at}}</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> <a href="{{route('deleteGame',$game->id)}}" class="text-red-600 hover:text-red-900">Remove</a></td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$game->team1}} - {{$game->team2}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                    @if($game->team1_goal == -1)
+                                        The game is not over
+                                    @else
+                                        {{$game->team1_goal}} - {{$game->team2_goal}}
+                                    @endif
+                                </td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                    @if($game->active == "yes")
+                                        <span class="inline-flex items-center rounded-full bg-green-400
+                                         px-2.5 py-0.5 text-xs font-medium text-green-800">Active</span>
+                                    @else
+                                        <span class="inline-flex items-center rounded-full bg-yellow-400
+                                         px-2.5 py-0.5 text-xs font-medium text-yellow-800">disable</span>
+                                    @endif
+                                </td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                    <a href="{{route('deleteGame',$game->id)}}" class="text-red-600 hover:text-red-900">Remove</a>&nbsp;
+                                    @if($game->active == 'no')
+                                    <a href="{{route('activeGame',$game->id)}}" class="text-red-600 hover:text-red-900">Active</a>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>
