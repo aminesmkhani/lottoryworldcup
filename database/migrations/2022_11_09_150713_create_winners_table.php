@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('tel',12);
             $table->integer('category_id');
             $table->integer('game_id');
+            $table->integer('sms_verify',['yes','no'])->default('no');
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 @extends('lottery.panel')
 @section('title')
-Games 🏆
+Games 🎮
 @endsection
 @section('content')
     <form class="mt-6 space-y-8 divide-y divide-gray-200" method="post" action="{{route('storeGame')}}" >
