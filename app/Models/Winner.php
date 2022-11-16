@@ -13,4 +13,8 @@ class Winner extends Model
     {
        return $this->belongsTo(Category::class,'category_id','id');
     }
+    public function game()
+    {
+        return $this->belongsTo(Game::class,'game_id','id');
+    }
 }

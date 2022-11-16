@@ -9,7 +9,7 @@ class WinnerController extends Controller
 {
     public function index()
     {
-        $winner = Winner::with('category')->get();
+        $winner = Winner::with('category','game')->get();
         dd($winner);
         return view('lottery.winner');
     }
