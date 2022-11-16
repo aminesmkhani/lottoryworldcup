@@ -33,7 +33,7 @@ Winners 🏆
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$winner->game->team1}} {{$winner->game->team1_goal}} - {{$winner->game->team2}} {{$winner->game->team2_goal}}</td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$winner->category->title}}</td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                    @if($winner->active == "yes")
+                                    @if($winner->sms_verify == "yes")
                                         <span class="inline-flex items-center rounded-full bg-green-400
                                          px-2.5 py-0.5 text-xs font-medium text-green-800">Sent</span>
                                     @else
