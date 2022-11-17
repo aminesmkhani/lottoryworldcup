@@ -24,26 +24,22 @@ Participants 👪
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
-{{--                            @foreach($winners as $winner)--}}
-{{--                            <tr>--}}
-{{--                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$winner->game->team1}} - {{$winner->game->team2}}</td>--}}
-{{--                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$winner->tel}}</td>--}}
-{{--                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$winner->game->team1}} {{$winner->game->team1_goal}} - {{$winner->game->team2}} {{$winner->game->team2_goal}}</td>--}}
-{{--                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$winner->category->title}}</td>--}}
-{{--                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">--}}
-{{--                                    @if($winner->sms_verify == "yes")--}}
-{{--                                        <span class="inline-flex items-center rounded-full bg-green-400--}}
-{{--                                         px-2.5 py-0.5 text-xs font-medium text-green-800">Sent</span>--}}
-{{--                                    @else--}}
-{{--                                        <span class="inline-flex items-center rounded-full bg-yellow-400--}}
-{{--                                         px-2.5 py-0.5 text-xs font-medium text-yellow-800">Not Sent</span>--}}
-{{--                                    @endif--}}
-{{--                                </td>--}}
-{{--                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">--}}
-{{--                                    <a href="{{route('sendWinnerSms',$winner->id)}}" class="text-blue-600 hover:text-blue-900">Send Sms</a>&nbsp;--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                            @endforeach--}}
+                            @foreach($participants as $participant)
+                            <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$participant->game->team1}} - {{$participant->game->team2}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$participant->tel}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$participant->game->team1}} {{$participant->team1_goal}} - {{$participant->game->team2}} {{$participant->team2_goal}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                    @if($participant->win == "yes")
+                                        <span class="inline-flex items-center rounded-full bg-green-400
+                                         px-2.5 py-0.5 text-xs font-medium text-green-800">Win 🎉</span>
+                                    @else
+                                        <span class="inline-flex items-center rounded-full bg-red-400
+                                         px-2.5 py-0.5 text-xs font-medium text-red-800">Lose</span>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
