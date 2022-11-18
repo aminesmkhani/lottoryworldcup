@@ -106,7 +106,7 @@ Games 🎮
                                     @if($game->team1_goal == -1)
                                         The game is not over
                                     @else
-                                        {{$game->team1_goal}} - {{$game->team2_goal}}
+                                        {{$game->team1}} {{$game->team1_goal}} - {{$game->team2}} {{$game->team2_goal}}
                                     @endif
                                 </td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -121,7 +121,41 @@ Games 🎮
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                     <a href="{{route('deleteGame',$game->id)}}" class="text-red-600 hover:text-red-900">Remove</a>&nbsp;
                                     @if($game->active == 'no')
-                                    <a href="{{route('activeGame',$game->id)}}" class="text-red-600 hover:text-red-900">Active</a>
+                                        @if($game->team1_goal == -1)
+                                            <a href="{{route('activeGame',$game->id)}}" class="text-red-600 hover:text-red-900">Active</a>
+                                        @endif
+                                    @else
+                                        <button onclick="toggleModal()" type="button" class="inline-flex items-center rounded border border-transparent bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Set Result 📈</button>
+                                        <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+                                            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                                <div class="fixed inset-0 transition-opacity">
+                                                    <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+                                                </div>
+                                                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                                                <div class="inline-block align-center bg-gray-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                                    <div class="py-6 px-6 lg:px-8">
+                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Record the result 📈</h3>
+                                                        <form class="space-y-6" action="#">
+                                                            <div>
+                                                                <label for="team1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team1 - {{$game->team1}}</label>
+                                                                <input type="number" name="team1" id="team1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                                            </div>
+                                                            <div>
+                                                                <label for="team2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team2 - {{$game->team2}}</label>
+                                                                <input type="number" name="team2" id="team2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                                            </div>
+                                                         </form>
+                                                    </div>
+                                                    <div class="bg-gray-900 px-4 py-3 text-right">
+                                                        <button type="button" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i class="fas fa-times"></i> Cancel</button>
+                                                        <a href="{{route('setResultGame',$game->id)}}">
+                                                            <button type="button" class="py-2 px-4 bg-indigo-500 text-white rounded hover:bg-indigo-700 mr-2"><i class="fas fa-plus"></i> Save</button>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endif
                                 </td>
                             </tr>
@@ -133,5 +167,9 @@ Games 🎮
             </div>
         </div>
     </div>
-
+    <script>
+        function toggleModal() {
+            document.getElementById('modal').classList.toggle('hidden')
+        }
+    </script>
 @endsection

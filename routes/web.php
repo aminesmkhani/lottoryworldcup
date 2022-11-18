@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('/games',[GamesController::class,'store'])->name('storeGame');
     Route::get('/game/delete/{id}',[GamesController::class,'destroy'])->name('deleteGame');
     Route::get('/game/active/{id}',[GamesController::class,'active'])->name('activeGame');
+    Route::get('/game/result/{id}',[GamesController::class,'result'])->name('setResultGame');
 
     Route::get('/winners',[WinnerController::class,'index']);
     Route::get('/winners/sms',[WinnerController::class,'sendSms'])->name('sendWinnerSms');
