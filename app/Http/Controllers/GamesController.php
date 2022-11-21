@@ -47,4 +47,16 @@ class GamesController extends Controller
             return redirect()->back()->with('success','Game Successfully Active!');
         }
     }
+
+    public function result(Request $request)
+    {
+        echo "ok!";
+//        $game = Game::findOrFail($id);
+//        if ($game){
+//            $game->team1
+//        }else{
+//            return back();
+//        }
+//        dd($game);
+    }
 }
