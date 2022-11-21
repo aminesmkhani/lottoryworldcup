@@ -135,7 +135,8 @@ Games 🎮
                                                 <div class="inline-block align-center bg-gray-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                                                     <div class="py-6 px-6 lg:px-8">
                                                         <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Record the result 📈</h3>
-                                                        <form class="space-y-6" action="#">
+                                                            <form class="space-y-6" action="{{route('setResultGame')}}" method="post">
+                                                                @csrf
                                                             <div>
                                                                 <label for="team1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team1 - {{$game->team1}}</label>
                                                                 <input type="number" name="team1" id="team1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
@@ -144,14 +145,12 @@ Games 🎮
                                                                 <label for="team2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team2 - {{$game->team2}}</label>
                                                                 <input type="number" name="team2" id="team2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                                                             </div>
-                                                         </form>
+                                                                <input type="hidden" value="{{$game->id}}" name="gameId">
+                                                                <button  type="submit" class="py-2 px-4 bg-indigo-500 text-white rounded hover:bg-indigo-700 mr-2">Save</button>
+                                                            </form>
                                                     </div>
                                                     <div class="bg-gray-900 px-4 py-3 text-right">
                                                         <button type="button" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i class="fas fa-times"></i> Cancel</button>
-                                                        <a href="{{route('setResultGame',$game->id)}}">
-                                                            <button type="button" class="py-2 px-4 bg-indigo-500 text-white rounded hover:bg-indigo-700 mr-2"><i class="fas fa-plus"></i> Save</button>
-                                                        </a>
-
                                                     </div>
                                                 </div>
                                             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GamesStoreRequest;
+use App\Http\Requests\ResultUpdateRequest;
 use App\Models\Category;
 use App\Models\Game;
 use Illuminate\Http\Request;
@@ -46,5 +47,15 @@ class GamesController extends Controller
             $game->save();
             return redirect()->back()->with('success','Game Successfully Active!');
         }
+    }
+
+    public function result(ResultUpdateRequest $request)
+    {
+        $game = Game::findOrFail($request->gameId);
+            $game->team1_goal = $request->team1;
+            $game->team2_goal = $request->team2;
+            $game->active = 'no';
+            $game->save();
+            return redirect()->back()->with('success','Set Result Successfully!');
     }
 }
