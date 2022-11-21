@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GamesStoreRequest;
+use App\Http\Requests\ResultUpdateRequest;
 use App\Models\Category;
 use App\Models\Game;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class GamesController extends Controller
         }
     }
 
-    public function result(Request $request)
+    public function result(ResultUpdateRequest $request)
     {
         echo "ok!";
 //        $game = Game::findOrFail($id);

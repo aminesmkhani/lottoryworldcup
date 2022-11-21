@@ -145,7 +145,7 @@ Games 🎮
                                                                 <label for="team2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team2 - {{$game->team2}}</label>
                                                                 <input type="number" name="team2" id="team2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                                                             </div>
-                                                                <button  type="submit" class="py-2 px-4 bg-indigo-500 text-white rounded hover:bg-indigo-700 mr-2"><i class="fas fa-plus"></i> Save</button>
+                                                                <button  type="submit" class="py-2 px-4 bg-indigo-500 text-white rounded hover:bg-indigo-700 mr-2">Save</button>
 
                                                             </form>
                                                     </div>
