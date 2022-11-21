@@ -37,4 +37,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/winners/sms',[WinnerController::class,'sendSms'])->name('sendWinnerSms');
 
     Route::get('/participants',[ParticipantController::class,'index']);
+    Route::get('/lottery',[ParticipantController::class,'index']);
 });
