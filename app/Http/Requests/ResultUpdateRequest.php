@@ -24,8 +24,9 @@ class ResultUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'team1' => 'required|number|between:0,20',
-            'team2' => 'required|number|between:0,20',
+            'team1' => 'required|numeric',
+            'team2' => 'required|numeric',
+            'gameId' => 'required|numeric'
         ];
     }
 }

@@ -51,13 +51,11 @@ class GamesController extends Controller
 
     public function result(ResultUpdateRequest $request)
     {
-        echo "ok!";
-//        $game = Game::findOrFail($id);
-//        if ($game){
-//            $game->team1
-//        }else{
-//            return back();
-//        }
-//        dd($game);
+        $game = Game::findOrFail($request->gameId);
+            $game->team1_goal = $request->team1;
+            $game->team2_goal = $request->team2;
+            $game->active = 'no';
+            $game->save();
+            return redirect()->back()->with('success','Set Result Successfully!');
     }
 }
