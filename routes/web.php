@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\LotteryController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\WinnerController;
 use Illuminate\Support\Facades\Route;
@@ -37,4 +38,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/winners/sms',[WinnerController::class,'sendSms'])->name('sendWinnerSms');
 
     Route::get('/participants',[ParticipantController::class,'index']);
+    Route::get('/lottery',[LotteryController::class,'index']);
 });

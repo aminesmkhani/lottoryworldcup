@@ -6,6 +6,7 @@ use App\Http\Requests\GamesStoreRequest;
 use App\Http\Requests\ResultUpdateRequest;
 use App\Models\Category;
 use App\Models\Game;
+use App\Models\Participants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -56,6 +57,10 @@ class GamesController extends Controller
             $game->team2_goal = $request->team2;
             $game->active = 'no';
             $game->save();
+         Participants::where('game_id',$request->gameId)
+                ->where('team1_goal',$request->team1)
+                ->where('team2_goal',$request->team2)
+                ->update(['win' => 'yes']);
             return redirect()->back()->with('success','Set Result Successfully!');
     }
 }
